@@ -10,6 +10,7 @@
 #include "c_test.h"
 
 
+
 int main(int argc, const char * argv[]) {
 
 //    char* str = "AAAABBBBCC";
@@ -29,6 +30,7 @@ int main(int argc, const char * argv[]) {
     
    // printCross(15, 'J');
     
+
     PrintAddUpFunction();
     result();
     return 0;
