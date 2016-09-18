@@ -12,7 +12,9 @@
 #include <stdio.h>
 
 int numberOfPairs(int* array, const unsigned int size); // Not Done
+//9/17/2016
 void compressString(char* inputString, const unsigned int inputSize, char* outputString, unsigned int* outputSize); // Not Done
+    
 void noThree(unsigned int num);
 void printTriangle(int level_in, char c);
 void printRectangle(int height, int width);

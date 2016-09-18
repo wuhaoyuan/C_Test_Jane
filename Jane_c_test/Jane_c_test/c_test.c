@@ -7,7 +7,7 @@
 //
 
 #include "c_test.h"
-
+#include "math.h"
 /*
  4x4
  *****
@@ -228,6 +228,91 @@ void result() {
         
         
     }
+    
+}
+
+//9/17/2016
+/*
+ char* str = "AABBBBCC";
+ char outStr[10000];
+ unsigned int outSize;
+ 
+ compressString(str, 10, outStr, &outSize);
+ */
+
+int getIntDigits(int inputInt) {
+    int inputLog10 = (int) log10((double)inputInt);
+    return (inputLog10 + 1);
+}
+
+void storeToOutArray(char* outputString, char currentChar, int countingSum, int currentOutIdex) {
+    
+    int countingSumDigits = getIntDigits(countingSum);
+    outputString[currentOutIdex]=currentChar;
+
+    if (countingSum != 1) {
+        int residule = countingSum;
+        for (int i=0; i<countingSumDigits; i++) {
+            if (i == countingSumDigits-1) {
+                outputString[currentOutIdex+1+i] = residule+48;
+            } else {
+                outputString[currentOutIdex+1+i]=countingSum/(10*(countingSumDigits-1))+48;
+                residule = residule % (10*(countingSumDigits-1));
+            }
+        }
+    }
+    
+    return;
+}
+
+void compressString(char* inputString, const unsigned int inputSize, char* outputString, unsigned int* outputSize){
+    
+    char currentChar;
+    int countingSum=0;
+    int currentOutIdex=0;
+    *outputSize=0;
+    
+    
+    for (int i=0; i<inputSize; i++) {
+        
+        if (i==0) { //first char
+            currentChar= inputString[i];
+            countingSum++;
+        }
+        else{
+            //if not finding differnt, increment countingSum.
+            if (inputString[i]==inputString[i-1]) {
+                countingSum++;
+                currentChar=inputString[i];
+                if (i==(inputSize-1)) { //if last number repeat itself
+                    storeToOutArray(outputString, currentChar, countingSum, currentOutIdex);
+                    currentOutIdex++;
+                    if (countingSum != 1) {
+                        currentOutIdex+=getIntDigits(countingSum);
+                    }
+                }
+            }
+            else{
+                
+                //if found something differnt, store the privous to the output array
+                currentChar=inputString[i-1];
+                storeToOutArray(outputString, currentChar, countingSum, currentOutIdex);
+                
+                //update then start the next check
+                currentOutIdex++;
+                if (countingSum != 1) {
+                    currentOutIdex+=getIntDigits(countingSum);
+                    countingSum=1;
+                }
+                currentChar=inputString[i];
+                
+                if (i==(inputSize-1)) { //if last number does not repeat itself
+                    storeToOutArray(outputString, currentChar, countingSum, currentOutIdex);
+                }
+            }
+        }
+    }
+    *outputSize = currentOutIdex + 1;
     
 }
 
