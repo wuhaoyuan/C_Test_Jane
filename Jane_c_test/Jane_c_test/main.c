@@ -14,6 +14,7 @@
 int main(int argc, const char * argv[]) {
 
 //9/17/2016
+/*
     char* str = "AAAAAAAAAAEDDDDDDDDDDDDBBBBC";
     int inputTotal=28;
     char outStr[10000];
@@ -25,8 +26,23 @@ int main(int argc, const char * argv[]) {
         
     }
     printf("\n");
-    // expect: outstr == "A4B4C2"
-    // expect: outSize == 6
+*/
+    
+//9/17/2016
+    
+     char* str = "A09BCD";
+     int inputTotal=7;
+    char outStr[10000];
+     unsigned int outSize;
+     decompressString(str, inputTotal, outStr, &outSize);
+    /*
+     for (int i=0; i<outSize; i++) {
+     printf("%c",outStr[i]);
+     
+     }
+     printf("\n");
+    */
+    
     
   // noThree(50);
 //    printf("\n");

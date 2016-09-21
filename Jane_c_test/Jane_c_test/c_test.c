@@ -8,6 +8,8 @@
 
 #include "c_test.h"
 #include "math.h"
+#include "stdbool.h"
+
 /*
  4x4
  *****
@@ -288,7 +290,7 @@ void compressString(char* inputString, const unsigned int inputSize, char* outpu
                     storeToOutArray(outputString, currentChar, countingSum, currentOutIdex);
                     currentOutIdex++;
                     if (countingSum != 1) {
-                        currentOutIdex+=getIntDigits(countingSum);
+                        currentOutIdex+=getIntDigits(countingSum); //becasue the countingSum may >9;
                     }
                 }
             }
@@ -315,6 +317,105 @@ void compressString(char* inputString, const unsigned int inputSize, char* outpu
     *outputSize = currentOutIdex + 1;
     
 }
+
+
+//9/20/2016
+/*
+ char* str = "A3BC12";
+ char outStr[10000]="AAABCCCCCCCCCCCC";
+ unsigned int outSize=16;
+ 
+ decompressString(str, 6, outStr, &outSize);
+ */
+
+//1.a function to check if a char is a character or number
+//2. a funciton that input char and number, it will print then out
+//3. if there is not number following right after a character, means number ==1
+//4. a function to convert char to digit
+//5. a funtion to combine the digits into integer, so it will depends on how many digit it has
+
+bool isNumber(char inputAnimal){
+    if (inputAnimal=='0' |inputAnimal=='1' |inputAnimal=='2'|inputAnimal=='3'|inputAnimal=='4'|inputAnimal=='5'|inputAnimal=='6'|inputAnimal=='7'|inputAnimal=='8'|inputAnimal=='9') {
+      //  printf("is number\n");
+        return true;
+    }
+    else{
+        //printf("is char\n");
+        return false;
+    }
+}
+
+int convertToDigit(char inputChar){
+    int outputNum;
+    outputNum= (int)(inputChar)-48;
+    //printf("outputNum is %d", outputNum);
+    return outputNum;
+}
+
+void printOutPerviousContent(char currentChar, int integerDigitCount, int* digitBuffer){
+    
+    int finalInteger=0;
+    
+    for (int i=0; i<integerDigitCount; i++) {
+        finalInteger+= digitBuffer[i]*pow(10, integerDigitCount-i-1);
+    }
+    //printf("final intger %d\n", finalInteger);
+    
+    for (int k=0; k<finalInteger; k++) {
+        printf("%c",currentChar);
+    }
+   // printf("\n");
+    return;
+}
+
+void decompressString(char* inputString, const unsigned int inputSize, char* outputString, unsigned int* outputSize){
+    
+    char currentChar = inputString[0];
+    char toPrintChar = inputString[0];
+    bool bufferPrintTag = false;
+    int integerDigitCount = 1;
+    int digitBuffer[3]; // assume the number will not be greater than 999
+    
+    
+    for (int i=0; i<inputSize; i++) {
+        toPrintChar = currentChar;    //save the perious char
+        
+        if (!isNumber(inputString[i])) {
+            // start the new iteration
+            currentChar = inputString[i];
+            if (i!=0) {
+                // if flag==true, means it is on the next interation, so we can print the privous contents
+                bufferPrintTag = true;
+            }
+        } else {
+            digitBuffer[integerDigitCount] = convertToDigit(inputString[i]);
+            integerDigitCount++;
+        }
+        
+        if (bufferPrintTag == true) {
+            if (integerDigitCount == 1) {
+                // if there is only one char
+                printf("%c",toPrintChar);
+            }
+            printOutPerviousContent(toPrintChar, integerDigitCount, digitBuffer);
+            bufferPrintTag = false;
+            integerDigitCount = 1;
+        }
+        
+        if (i==inputSize-1) {
+            // last one
+            printOutPerviousContent(toPrintChar, integerDigitCount, digitBuffer);
+            if (integerDigitCount == 1) {
+                // if last one only has one count
+                printf("%c", inputString[inputSize-1]);
+            }
+        }
+    }
+    printf("\n");
+    return;
+}
+
+
 
 
 

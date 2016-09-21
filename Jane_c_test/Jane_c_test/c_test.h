@@ -13,8 +13,25 @@
 
 int numberOfPairs(int* array, const unsigned int size); // Not Done
 //9/17/2016
-void compressString(char* inputString, const unsigned int inputSize, char* outputString, unsigned int* outputSize); // Not Done
-    
+/*
+ char* str = "AABBBBCC";
+ char outStr[10000];
+ unsigned int outSize;
+ 
+ compressString(str, 10, outStr, &outSize);
+ */
+void compressString(char* inputString, const unsigned int inputSize, char* outputString, unsigned int* outputSize);
+
+//9/20/2016
+/*
+ char* str = "A3BC12";
+ char outStr[10000];
+ unsigned int outSize;
+ 
+ decompressString(str, 6, outStr, &outSize);
+ */
+void decompressString(char* inputString, const unsigned int inputSize, char* outputString, unsigned int* outputSize); // Not Done
+
 void noThree(unsigned int num);
 void printTriangle(int level_in, char c);
 void printRectangle(int height, int width);
