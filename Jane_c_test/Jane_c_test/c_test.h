@@ -10,7 +10,11 @@
 #define c_test_h
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
+#pragma mark -
+#pragma mark General Algorithm
 int numberOfPairs(int* array, const unsigned int size); // Not Done
 //9/17/2016
 /*
@@ -46,5 +50,29 @@ void PrintAddUpFunction();
 int ReturnSum(int k,int Neg1,int Neg2);
 
 void result();
+
+#pragma mark -
+#pragma mark Link List
+struct Node {
+    int value;
+    int count;
+    struct Node *next;
+};
+typedef struct Node Node;
+
+struct List {
+    int length;
+    Node *root;
+};
+typedef struct List List;
+
+List* createList();
+void pushBackTolist(List *list, int value);
+
+int lengthOfList(List *list);
+void removeFromList(List *list, int value);
+void removeAll(List *list);
+bool findValue(List *list, int value);
+void printList(List *list);
 
 #endif /* c_test_h */

@@ -10,6 +10,8 @@
 #include "math.h"
 #include "stdbool.h"
 
+#pragma mark -
+#pragma mark General Algorithm
 /*
  4x4
  *****
@@ -415,6 +417,182 @@ void decompressString(char* inputString, const unsigned int inputSize, char* out
     return;
 }
 
+#pragma mark -
+#pragma mark Link List
+Node* newNode(int value) {
+    Node *newNode = malloc(sizeof(Node));
+    newNode->value = value;
+    newNode->count = 1;
+    newNode->next = NULL;
+    return newNode;
+}
+
+List* createList() {
+    List *newList = malloc(sizeof(List));
+    newList->length = 0;
+    newList->root = NULL;
+    return newList;
+}
+
+void pushBackTolist(List *list, int value) {
+    Node *currentNode = list->root;
+    bool nodeExisted = false;
+    
+    if (currentNode == NULL) {
+         list->root= newNode(value);
+        list->length++;
+        return;
+    }
+    
+    while (1) {
+        if (currentNode->value == value) {
+            nodeExisted = true;
+            break;
+        } else if (currentNode->next == NULL) {
+            nodeExisted = false;
+            break;
+        } else {
+            currentNode = currentNode->next;
+        }
+    }
+    
+    if (nodeExisted) {
+        currentNode->count++;
+    } else {
+        currentNode->next = newNode(value);
+    }
+    list->length++;
+    return;
+}
+
+
+
+int lengthOfList(List *list){
+    return (list->length);
+}
+
+
+void removeFromList(List *list, int value){
+    
+    Node *currentNode = list->root;
+    bool nodeExisted = false;
+    
+    if (currentNode == NULL) {
+        printf("Error: List Does Not Exist!");
+        return;
+    }else if (currentNode->value == value){ //first Node of the list
+        if (currentNode->count != 1) {
+            currentNode->count--;
+        }else{ //count=1
+            if (currentNode->next==NULL) {
+                free(list->root);
+                list->root=NULL;
+            }else{
+            Node* storeNode = currentNode->next;
+            free(currentNode);
+            list->root=storeNode;
+            }
+        }
+        (list->length)--;
+        return;
+    }
+    
+    while (1) {
+        if ((currentNode->next)->value == value) { //exist
+            nodeExisted = true;
+            break;
+        }else if ((currentNode->next)->next == NULL){ //not exist
+            nodeExisted = false;
+            break;
+        }else{
+            currentNode = currentNode->next; //continue finding
+        }
+    }
+    
+        if (nodeExisted == true) {
+            if ((currentNode->next)->count!=1) { //more the one exist
+                (currentNode->next)->count--;
+            }else if((currentNode->next)->next==NULL){ //only one exist at the last node
+                free(currentNode->next);
+                currentNode->next=NULL;
+            }else{ //Only one locate in the middle of the list
+                Node *storeNode;
+                storeNode=(currentNode->next)->next;
+                free(currentNode->next);
+                currentNode->next=storeNode;
+            }
+        }else{ //Node does not exit
+            printf("the value does not exit in the list\n");
+            return;
+        }
+    list->length--;
+    return;
+    
+}
+
+
+void removeAll(List *list){
+    
+    
+    Node* currentNode =list->root;
+    Node* nextNode=NULL;
+    
+    if (list->root==NULL) {
+        printf("nothing to remove, the list is empty");
+        return;
+    }
+    while (currentNode!=NULL) {
+        nextNode = currentNode->next;
+        free(currentNode);
+        currentNode=nextNode;
+    }
+    
+    list->length=0;
+    list->root=NULL;
+    return;
+}
+
+bool findValue(List *list, int value){
+    Node* currentNode =list->root;
+    
+    if (list->root==NULL) {
+        printf("The list is empty, nothting to find");
+        return false;
+    }
+    while (currentNode!=NULL) {
+        if (currentNode->value==value) {
+            printf("We can find %d\n", value);
+            return true;
+        }
+        currentNode = currentNode->next;
+    }
+    printf("We cannot find %d\n", value);
+    return false;
+}
+
+
+void printList(List *list) {
+    Node *currentNode = list->root;
+    int i;
+    if (list->root==NULL) {
+        printf("list is empty, nothing to print\n");
+        return;
+    }
+    
+    while (1) {
+        if (currentNode == NULL) {
+            break;
+        } else {
+            for (i = 0; i < currentNode->count; i++) {
+                printf("%d ", currentNode->value);
+            }
+            currentNode = currentNode->next;
+        }
+    }
+    
+    printf("(length of the list is %d)\n", list->length);
+    return;
+}
 
 
 

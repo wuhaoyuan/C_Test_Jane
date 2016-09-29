@@ -29,12 +29,12 @@ int main(int argc, const char * argv[]) {
 */
     
 //9/17/2016
-    
-     char* str = "A09BCD";
-     int inputTotal=7;
-    char outStr[10000];
-     unsigned int outSize;
-     decompressString(str, inputTotal, outStr, &outSize);
+//    
+//     char* str = "A09BCD";
+//     int inputTotal=7;
+//    char outStr[10000];
+//     unsigned int outSize;
+//     decompressString(str, inputTotal, outStr, &outSize);
     /*
      for (int i=0; i<outSize; i++) {
      printf("%c",outStr[i]);
@@ -56,6 +56,30 @@ int main(int argc, const char * argv[]) {
 
 //PrintAddUpFunction();
   //  result();
+    
+    
+//9-28-2016
+    
+    List *list = createList();
+    pushBackTolist(list, 6);
+    pushBackTolist(list, 1);
+    pushBackTolist(list, 1);
+    pushBackTolist(list, 4);
+    pushBackTolist(list, 3);
+    pushBackTolist(list, 3);
+    pushBackTolist(list, 2);
+    pushBackTolist(list, 6);
+    
+    printList(list);
+//    removeFromList(list, 6);
+//    printList(list);
+//    
+//    findValue(list, 3);
+//    
+    removeAll(list);
+//    printList(list);
+    
+    free(list);
     return 0;
 }
 
