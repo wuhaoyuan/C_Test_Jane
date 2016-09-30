@@ -61,14 +61,14 @@ int main(int argc, const char * argv[]) {
 //9-28-2016
     
     List *list = createList();
-    pushBackTolist(list, 6);
     pushBackTolist(list, 1);
-    pushBackTolist(list, 1);
-    pushBackTolist(list, 4);
-    pushBackTolist(list, 3);
-    pushBackTolist(list, 3);
     pushBackTolist(list, 2);
+    pushBackTolist(list, 3);
+    pushBackTolist(list, 4);
+    pushBackTolist(list, 5);
     pushBackTolist(list, 6);
+    pushBackTolist(list, 7);
+    pushBackTolist(list, 8);
     
     printList(list);
 //    removeFromList(list, 6);
@@ -76,8 +76,30 @@ int main(int argc, const char * argv[]) {
 //    
 //    findValue(list, 3);
 //    
-    removeAll(list);
+//    removeAll(list);
 //    printList(list);
+
+//9-29-2016 reverse list
+//    reverseList(list);
+//    printList(list);
+    
+// combine list
+    List *listB = createList();
+    pushBackTolist(listB, 11);
+    pushBackTolist(listB, 12);
+    pushBackTolist(listB, 13);
+    pushBackTolist(listB, 14);
+    pushBackTolist(listB, 15);
+    pushBackTolist(listB, 16);
+    pushBackTolist(listB, 17);
+    pushBackTolist(listB, 18);
+    
+    printList(listB);
+    
+    List *combinedList = createList();
+
+    combinedList = interleaveList(list, listB);
+    printList(combinedList);
     
     free(list);
     return 0;

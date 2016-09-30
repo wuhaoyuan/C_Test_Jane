@@ -74,5 +74,7 @@ void removeFromList(List *list, int value);
 void removeAll(List *list);
 bool findValue(List *list, int value);
 void printList(List *list);
+List* interleaveList(List *listA, List *listB);
+void reverseList(List *list);
 
 #endif /* c_test_h */

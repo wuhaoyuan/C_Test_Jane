@@ -595,5 +595,116 @@ void printList(List *list) {
 }
 
 
+//9-29-2016 spent 30mins to wirte the reverseList function
+void reverseList(List *list){
+    
+    Node* currentNode = list->root;
+    Node* lastNode = NULL;
+    Node* tempNode = NULL;
+    Node* processedNode = NULL;
+    
+    if (list->root == NULL) {
+        printf("The list is empty. Nothing to reverse");
+        return;
+    }
+    if ((list->root)->next == NULL){
+        printf("There is only one Node on the list, nothing to reverse");
+        return;
+    }
+    
+    while (currentNode->next != NULL) { //find the last Node
+        if (currentNode == list->root) {
+            //make root Node the last Node
+            currentNode = currentNode->next;
+            lastNode = list->root;
+            lastNode->next = NULL;
+            processedNode = lastNode;
+        }else{
+            tempNode = currentNode;
+            currentNode = currentNode->next;
+            tempNode->next = processedNode;
+            processedNode = tempNode;
+        }
+    }
+    //now currentNode is the last Node which is the root Node
+    list->root = currentNode;
+    (list->root)->next = processedNode;
+    
+    return;
+}
+
+List* interleaveList(List *listA, List *listB){
+    //1. if B is empty, output A onlu. if A is empty, output B only
+    //2. the first element is always the first Node of list A
+    //3. there is only one Node in both list
+    
+    //initialize combinedList
+    List* combinedList = malloc(sizeof(List));
+    combinedList->length = 0;
+    combinedList->root = NULL;
+    
+    //variable used in the function
+    Node* currentNodeA = listA->root;
+    Node* currentNodeB = listB->root;
+    Node* currentCombinedNode = NULL;
+    Node* tempNode = NULL;
+
+    
+    //1. if B is empty, output A onlu. if A is empty, output B only
+    if (listA->root == NULL && listB->root == NULL) {
+        return combinedList;
+    }
+    if (listA->root == NULL && listB->root != NULL) {
+        return listB;
+    }
+    if (listA->root != NULL && listB->root == NULL) {
+        return listA;
+    }
+    
+    // the first element is always the first Node of list A
+    combinedList->root = listA->root;
+    
+    
+    //there is only one Node in both list
+    if (listA->root->next == NULL && listB->root->next == NULL) {
+        combinedList->root->next=listB->root;
+        return combinedList;
+    }
+    
+    //if we get here, means there are more than 1 node in both list;
+    while (currentNodeA->next != NULL && currentNodeB->next != NULL) {
+        if (currentCombinedNode == NULL) { //first time
+            tempNode=currentNodeA;
+            currentNodeA = currentNodeA->next;
+            tempNode->next = currentNodeB;
+            currentCombinedNode = currentNodeB;
+            currentNodeB = currentNodeB->next;
+        }else{
+            currentCombinedNode = currentNodeB;
+            currentCombinedNode->next = currentNodeA;
+            currentCombinedNode->next->next = currentNodeB;
+            currentNodeB = currentNodeB->next;
+            currentNodeA = currentNodeA->next;
+        }
+    }
+    
+    
+//    tempNode = currentNode;
+//    currentNode = currentNode->next;
+//    tempNode->next = processedNode;
+//    processedNode = tempNode;
+    
+    //if we get here, means one of the list is at the last Node
+    //if listA is at the last node
+    if (currentNodeA->next == NULL) {
+        currentCombinedNode->next->next->next = currentNodeB;
+        return combinedList;
+    }
+    if (currentNodeB->next == NULL) {
+        currentCombinedNode->next->next->next=currentNodeA;
+        return combinedList;
+    }
+    return combinedList;
+}
 
 
