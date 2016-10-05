@@ -65,11 +65,6 @@ int main(int argc, const char * argv[]) {
     pushBackTolist(list, 2);
     pushBackTolist(list, 3);
     pushBackTolist(list, 4);
-    pushBackTolist(list, 5);
-    pushBackTolist(list, 6);
-    pushBackTolist(list, 7);
-    pushBackTolist(list, 8);
-    
     printList(list);
 //    removeFromList(list, 6);
 //    printList(list);
@@ -89,10 +84,7 @@ int main(int argc, const char * argv[]) {
     pushBackTolist(listB, 12);
     pushBackTolist(listB, 13);
     pushBackTolist(listB, 14);
-    pushBackTolist(listB, 15);
-    pushBackTolist(listB, 16);
-    pushBackTolist(listB, 17);
-    pushBackTolist(listB, 18);
+
     
     printList(listB);
     

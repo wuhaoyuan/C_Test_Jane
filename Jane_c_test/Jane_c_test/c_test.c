@@ -646,11 +646,10 @@ List* interleaveList(List *listA, List *listB){
     //variable used in the function
     Node* currentNodeA = listA->root;
     Node* currentNodeB = listB->root;
-    Node* currentCombinedNode = NULL;
-    Node* tempNode = NULL;
+    Node* previousNode = NULL;
 
     
-    //1. if B is empty, output A onlu. if A is empty, output B only
+    //1. if B is empty, output A only. if A is empty, output B only
     if (listA->root == NULL && listB->root == NULL) {
         return combinedList;
     }
@@ -661,49 +660,72 @@ List* interleaveList(List *listA, List *listB){
         return listA;
     }
     
-    // the first element is always the first Node of list A
-    combinedList->root = listA->root;
-    
     
     //there is only one Node in both list
     if (listA->root->next == NULL && listB->root->next == NULL) {
-        combinedList->root->next=listB->root;
+        combinedList->root = listA->root;
+        combinedList->root->next = listB->root;
+        return combinedList;
+    }
+    
+    //////////// All the special cases have been considered above./////////////
+    
+    // the first element is always the first Node of list A
+    combinedList->root = listA->root;
+    currentNodeA = currentNodeA->next; //save the next starting NodeA
+    currentNodeB = currentNodeB->next; //save the next starting NodeB
+    listA->root->next = listB->root; //cancade the Node;
+    previousNode = listB->root; //save the last processed Node in the combinedList
+        
+    //special case for 2 Node on listA, 1 Node on listB
+    if(currentNodeB == NULL){ 
+        previousNode->next=currentNodeA;
+        return combinedList;
+    }
+    
+    //special case for 2 Node on listB, 1 Node on listA
+    if(currentNodeA==NULL){
+        previousNode->next=currentNodeB;
         return combinedList;
     }
     
     //if we get here, means there are more than 1 node in both list;
     while (currentNodeA->next != NULL && currentNodeB->next != NULL) {
-        if (currentCombinedNode == NULL) { //first time
-            tempNode=currentNodeA;
+            previousNode->next = currentNodeA;
             currentNodeA = currentNodeA->next;
-            tempNode->next = currentNodeB;
-            currentCombinedNode = currentNodeB;
+            previousNode->next->next = currentNodeB;
+            previousNode = currentNodeB;
             currentNodeB = currentNodeB->next;
-        }else{
-            currentCombinedNode = currentNodeB;
-            currentCombinedNode->next = currentNodeA;
-            currentCombinedNode->next->next = currentNodeB;
-            currentNodeB = currentNodeB->next;
-            currentNodeA = currentNodeA->next;
-        }
     }
     
-    
-//    tempNode = currentNode;
-//    currentNode = currentNode->next;
-//    tempNode->next = processedNode;
-//    processedNode = tempNode;
     
     //if we get here, means one of the list is at the last Node
-    //if listA is at the last node
-    if (currentNodeA->next == NULL) {
-        currentCombinedNode->next->next->next = currentNodeB;
+    
+    // if listB's Node is more than listA
+        if(currentNodeB->next != NULL && currentNodeA->next == NULL){
+            previousNode->next = currentNodeA;
+            previousNode->next->next =currentNodeB;
+            return combinedList;
+        }
+    
+    
+    // if listA's Node is more than listB
+    if(currentNodeA->next != NULL && currentNodeB->next == NULL){
+        previousNode->next = currentNodeA;
+        currentNodeA=currentNodeA->next;
+        previousNode->next->next = currentNodeB;
+        previousNode->next->next->next = currentNodeA;
         return combinedList;
     }
-    if (currentNodeB->next == NULL) {
-        currentCombinedNode->next->next->next=currentNodeA;
-        return combinedList;
-    }
+    
+    //if listA has the same node number with listB
+    if (currentNodeB->next == NULL && currentNodeA->next == NULL){
+            previousNode->next = currentNodeA;
+            previousNode->next->next = currentNodeB;
+            return combinedList;
+        }
+    
+    
     return combinedList;
 }
 
