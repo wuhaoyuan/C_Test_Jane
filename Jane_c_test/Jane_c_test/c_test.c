@@ -690,7 +690,7 @@ List* interleaveList(List *listA, List *listB){
     }
     
     //if we get here, means there are more than 1 node in both list;
-    while (currentNodeA->next != NULL && currentNodeB->next != NULL) {
+    while (currentNodeA != NULL && currentNodeB != NULL) {
             previousNode->next = currentNodeA;
             currentNodeA = currentNodeA->next;
             previousNode->next->next = currentNodeB;
@@ -702,26 +702,21 @@ List* interleaveList(List *listA, List *listB){
     //if we get here, means one of the list is at the last Node
     
     // if listB's Node is more than listA
-        if(currentNodeB->next != NULL && currentNodeA->next == NULL){
-            previousNode->next = currentNodeA;
-            previousNode->next->next =currentNodeB;
+        if(currentNodeB != NULL && currentNodeA == NULL){
+            previousNode->next = currentNodeB;
             return combinedList;
         }
     
     
     // if listA's Node is more than listB
-    if(currentNodeA->next != NULL && currentNodeB->next == NULL){
+    if(currentNodeA != NULL && currentNodeB == NULL){
         previousNode->next = currentNodeA;
-        currentNodeA=currentNodeA->next;
-        previousNode->next->next = currentNodeB;
-        previousNode->next->next->next = currentNodeA;
         return combinedList;
     }
     
     //if listA has the same node number with listB
-    if (currentNodeB->next == NULL && currentNodeA->next == NULL){
-            previousNode->next = currentNodeA;
-            previousNode->next->next = currentNodeB;
+    if (currentNodeB == NULL && currentNodeA == NULL){
+        previousNode->next = NULL;
             return combinedList;
         }
     

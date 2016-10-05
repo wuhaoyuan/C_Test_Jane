@@ -64,7 +64,7 @@ int main(int argc, const char * argv[]) {
     pushBackTolist(list, 1);
     pushBackTolist(list, 2);
     pushBackTolist(list, 3);
-    pushBackTolist(list, 4);
+
     printList(list);
 //    removeFromList(list, 6);
 //    printList(list);
@@ -83,7 +83,6 @@ int main(int argc, const char * argv[]) {
     pushBackTolist(listB, 11);
     pushBackTolist(listB, 12);
     pushBackTolist(listB, 13);
-    pushBackTolist(listB, 14);
 
     
     printList(listB);
