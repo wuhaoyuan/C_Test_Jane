@@ -724,4 +724,86 @@ List* interleaveList(List *listA, List *listB){
     return combinedList;
 }
 
+//2016-10-10 sort list
+// put the Node onto the output list in the correct space
+
+void goSort (Node* workingNode, List* outputList){
+    
+    int compareValue = workingNode->value;
+    Node* currentNode = outputList->root;
+  
+    //Special case
+    if (currentNode ->next == NULL) {
+        if (outputList->root->value < workingNode->value) {
+            outputList->root->next = workingNode;
+            workingNode->next = NULL;
+            return;
+        }else {
+            outputList->root = workingNode;
+            workingNode->next = currentNode;
+            currentNode->next = NULL;
+            return;
+        }
+    }
+    
+    while (currentNode->next->next != NULL) {
+        if (currentNode->next->next->value > compareValue) {
+            break; //found the Node
+        }else{
+            currentNode = currentNode->next;
+        }
+    }
+    
+    if (currentNode->next->next == NULL) { //last 2nd Node
+        if (compareValue > currentNode->value && compareValue < currentNode->next->value) { //middle
+            workingNode->next = currentNode->next;
+            currentNode->next = workingNode;
+            return;
+        }else if(compareValue < currentNode->value){ //first  ????
+            workingNode->next = currentNode;
+            outputList->root = workingNode;
+            return;
+        }else { //last
+            currentNode->next->next = workingNode;
+            workingNode->next = NULL;
+            return;
+        }
+    }else{ // break out from the while loop-> in the middle of the list
+        workingNode->next = currentNode->next->next;
+        currentNode->next->next = workingNode;
+        return;
+    }
+    
+    return;
+}
+
+void sortList(List *inputList){
+    
+    List* outputList = malloc(sizeof(List));
+    outputList->root = NULL;// first element in the new list
+    outputList->length = 0;
+    Node* workingNode = NULL;
+    
+
+    while (inputList->root != NULL) { //Node in the input list will decrease
+        if (outputList->root == NULL) { //fist Node
+            outputList->root = inputList->root;
+            inputList->root = inputList->root->next; //update the input list
+            outputList->root->next = NULL;
+            continue;
+        }
+        
+        workingNode = inputList->root;
+        inputList->root = inputList->root->next; //update the input list
+        workingNode->next = NULL; // unlink the first Node of the input list
+        // put the Node onto the output list in the correct space. This funciton will modify the output list
+        goSort (workingNode, outputList);
+    }
+    
+    //make inputlist = output list
+    inputList->root = outputList->root;
+    
+    return;
+}
+
 

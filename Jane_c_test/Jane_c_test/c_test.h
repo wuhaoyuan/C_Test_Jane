@@ -77,4 +77,8 @@ void printList(List *list);
 List* interleaveList(List *listA, List *listB);
 void reverseList(List *list);
 
+//2016-10-10 sort list
+void sortList(List *inputList);
+
+
 #endif /* c_test_h */

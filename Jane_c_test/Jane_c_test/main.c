@@ -61,9 +61,12 @@ int main(int argc, const char * argv[]) {
 //9-28-2016
     
     List *list = createList();
-    pushBackTolist(list, 1);
+    pushBackTolist(list, 4);
     pushBackTolist(list, 2);
-    pushBackTolist(list, 3);
+    pushBackTolist(list, 1);
+    pushBackTolist(list, 5);
+    pushBackTolist(list, 9);
+    pushBackTolist(list, 8);
 
     printList(list);
 //    removeFromList(list, 6);
@@ -79,18 +82,23 @@ int main(int argc, const char * argv[]) {
 //    printList(list);
     
 // combine list
-    List *listB = createList();
-    pushBackTolist(listB, 11);
-    pushBackTolist(listB, 12);
-    pushBackTolist(listB, 13);
-
+//    List *listB = createList();
+//    pushBackTolist(listB, 11);
+//    pushBackTolist(listB, 12);
+//    pushBackTolist(listB, 13);
+//
+//    
+//    printList(listB);
+//    
+//    List *combinedList = createList();
+//
+//    combinedList = interleaveList(list, listB);
+//    printList(combinedList);
     
-    printList(listB);
+    //2016-10-10 sort list
+    sortList(list);
+    printList(list);
     
-    List *combinedList = createList();
-
-    combinedList = interleaveList(list, listB);
-    printList(combinedList);
     
     free(list);
     return 0;
