@@ -777,32 +777,57 @@ void goSort (Node* workingNode, List* outputList){
     return;
 }
 
+void addNodeToSortedList(Node* workingNode, List* outputList) {
+    Node *currentNode = outputList->root;
+    Node *prevNode = NULL;
+    
+    while (currentNode != NULL) {
+        if (currentNode->value > workingNode->value) {
+            // found location (always insert node before)
+            break;
+        }
+        prevNode = currentNode;
+        currentNode = currentNode->next;
+    }
+    
+    if (currentNode == outputList->root) {
+        // 1st node
+        outputList->root = workingNode;
+        workingNode->next = currentNode;
+    } else {
+        prevNode->next = workingNode;
+        workingNode->next = currentNode;
+    }
+}
+
 void sortList(List *inputList){
     
-    List* outputList = malloc(sizeof(List));
-    outputList->root = NULL;// first element in the new list
-    outputList->length = 0;
+    List* sortedList = malloc(sizeof(List));
+    sortedList->root = NULL;// first element in the new list
+    sortedList->length = 0;
     Node* workingNode = NULL;
     
-
     while (inputList->root != NULL) { //Node in the input list will decrease
-        if (outputList->root == NULL) { //fist Node
-            outputList->root = inputList->root;
+        if (sortedList->root == NULL) {
+            //fist Node
+            sortedList->root = inputList->root;
             inputList->root = inputList->root->next; //update the input list
-            outputList->root->next = NULL;
-            continue;
-        }
+            sortedList->root->next = NULL;
+            
+        } else {
         
-        workingNode = inputList->root;
-        inputList->root = inputList->root->next; //update the input list
-        workingNode->next = NULL; // unlink the first Node of the input list
-        // put the Node onto the output list in the correct space. This funciton will modify the output list
-        goSort (workingNode, outputList);
+            workingNode = inputList->root;
+            inputList->root = inputList->root->next; //update the input list
+            workingNode->next = NULL; // unlink the first Node of the input list
+            // put the Node onto the output list in the correct space. This funciton will modify the output list
+            //goSort (workingNode, sortedList);
+            addNodeToSortedList(workingNode, sortedList);
+        }
     }
     
     //make inputlist = output list
-    inputList->root = outputList->root;
-    
+    inputList->root = sortedList->root;
+    free(sortedList);
     return;
 }
 
