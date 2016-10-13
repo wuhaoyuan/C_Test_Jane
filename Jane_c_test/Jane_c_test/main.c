@@ -64,11 +64,20 @@ int main(int argc, const char * argv[]) {
     pushBackTolist(list, 4);
     pushBackTolist(list, 2);
     pushBackTolist(list, 1);
-//    pushBackTolist(list, 5);
-//    pushBackTolist(list, 9);
-//    pushBackTolist(list, 8);
+    pushBackTolist(list, 5);
+    pushBackTolist(list, 9);
+    pushBackTolist(list, 8);
 
     printList(list);
+    
+    //2016-10-12
+    List *list1 = createList();
+    List *list2 = createList();
+    alternativeSplit(list, list1, list2);
+    printList(list1);
+    printList(list2);
+
+    
 //    removeFromList(list, 6);
 //    printList(list);
 //    
@@ -96,8 +105,8 @@ int main(int argc, const char * argv[]) {
 //    printList(combinedList);
     
     //2016-10-10 sort list
-    sortList(list);
-    printList(list);
+//    sortList(list);
+//    printList(list);
     
     
     free(list);

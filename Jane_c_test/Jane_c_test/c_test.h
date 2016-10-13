@@ -81,4 +81,8 @@ void reverseList(List *list);
 void sortList(List *inputList);
 
 
+//2016-10-12
+void alternativeSplit(const List* inputList, List* outputList1, List* outputList2);
+
+
 #endif /* c_test_h */

@@ -831,4 +831,45 @@ void sortList(List *inputList){
     return;
 }
 
+//2016-10-12
+
+Node* copyNode(Node* inputNode) {
+    Node *newNode = malloc(sizeof(Node));
+    newNode->value = inputNode->value;
+    newNode->count = inputNode->count;
+    newNode->next = NULL;
+    return newNode;
+}
+
+void pushNodeToList(List *list, Node* inputNode) {
+    Node *currentNode = list->root;
+    
+    if (currentNode == NULL) {
+        list->root = copyNode(inputNode);;
+        return;
+    }
+    
+    while (currentNode->next != NULL) {
+        currentNode = currentNode->next;
+    }
+    currentNode->next = copyNode(inputNode);
+    return;
+}
+
+void alternativeSplit(const List* inputList, List* outputList1, List* outputList2) {
+    
+    Node* currentNode = inputList->root;
+    
+    while (currentNode != NULL) {
+        pushNodeToList(outputList1, currentNode);
+        currentNode = currentNode->next;
+        
+        if (currentNode != NULL) {
+            pushNodeToList(outputList2, currentNode);
+            currentNode = currentNode->next;
+        }
+    }
+    return;
+}
+
 
