@@ -1,13 +1,13 @@
 //
-//  c_test.h
+//  GeneralAlg.h
 //  Jane_c_test
 //
-//  Created by Johnny on 9/14/16.
-//  Copyright © 2016 Johnny. All rights reserved.
+//  Created by Jane Jane on 7/12/17.
+//  Copyright © 2017 Johnny. All rights reserved.
 //
 
-#ifndef c_test_h
-#define c_test_h
+#ifndef GeneralAlg_h
+#define GeneralAlg_h
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -50,39 +50,4 @@ void PrintAddUpFunction();
 int ReturnSum(int k,int Neg1,int Neg2);
 
 void result();
-
-#pragma mark -
-#pragma mark Link List
-struct Node {
-    int value;
-    int count;
-    struct Node *next;
-};
-typedef struct Node Node;
-
-struct List {
-    int length;
-    Node *root;
-};
-typedef struct List List;
-
-List* createList();
-void pushBackTolist(List *list, int value);
-
-int lengthOfList(List *list);
-void removeFromList(List *list, int value);
-void removeAll(List *list);
-bool findValue(List *list, int value);
-void printList(List *list);
-List* interleaveList(List *listA, List *listB);
-void reverseList(List *list);
-
-//2016-10-10 sort list
-void sortList(List *inputList);
-
-
-//2016-10-12
-void alternativeSplit(const List* inputList, List* outputList1, List* outputList2);
-
-
-#endif /* c_test_h */
+#endif /* GeneralAlg_h */

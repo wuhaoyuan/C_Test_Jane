@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B20300551D8A4BAF003A2A89 /* c_test.c in Sources */ = {isa = PBXBuildFile; fileRef = B20300531D8A4BAF003A2A89 /* c_test.c */; };
 		B2A91F5E1D506682005D98FF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B2A91F5D1D506682005D98FF /* main.c */; };
+		CC0E81F41F1736AD009777F8 /* GeneralAlg.c in Sources */ = {isa = PBXBuildFile; fileRef = CC0E81F31F1736AD009777F8 /* GeneralAlg.c */; };
+		CC136DFD1F173E4000BED562 /* LinkList.c in Sources */ = {isa = PBXBuildFile; fileRef = CC136DFC1F173E4000BED562 /* LinkList.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +25,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B20300531D8A4BAF003A2A89 /* c_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = c_test.c; sourceTree = "<group>"; };
-		B20300541D8A4BAF003A2A89 /* c_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c_test.h; sourceTree = "<group>"; };
 		B2A91F5A1D506682005D98FF /* Jane_c_test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Jane_c_test; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A91F5D1D506682005D98FF /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		CC0E81E81F173168009777F8 /* GeneralAlg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralAlg.h; sourceTree = "<group>"; };
+		CC0E81F31F1736AD009777F8 /* GeneralAlg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GeneralAlg.c; sourceTree = "<group>"; };
+		CC136DFC1F173E4000BED562 /* LinkList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LinkList.c; sourceTree = "<group>"; };
+		CCC0E8F61F173DB400B7E1BD /* LinkList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkList.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				B2A91F5D1D506682005D98FF /* main.c */,
-				B20300541D8A4BAF003A2A89 /* c_test.h */,
-				B20300531D8A4BAF003A2A89 /* c_test.c */,
+				CCC0E8F61F173DB400B7E1BD /* LinkList.h */,
+				CC136DFC1F173E4000BED562 /* LinkList.c */,
+				CC0E81E81F173168009777F8 /* GeneralAlg.h */,
+				CC0E81F31F1736AD009777F8 /* GeneralAlg.c */,
 			);
 			path = Jane_c_test;
 			sourceTree = "<group>";
@@ -93,7 +98,7 @@
 		B2A91F521D506682005D98FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = Johnny;
 				TargetAttributes = {
 					B2A91F591D506682005D98FF = {
@@ -124,7 +129,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2A91F5E1D506682005D98FF /* main.c in Sources */,
-				B20300551D8A4BAF003A2A89 /* c_test.c in Sources */,
+				CC136DFD1F173E4000BED562 /* LinkList.c in Sources */,
+				CC0E81F41F1736AD009777F8 /* GeneralAlg.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,8 +151,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -189,8 +197,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";

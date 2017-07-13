@@ -7,12 +7,19 @@
 //
 
 #include <stdio.h>
-#include "c_test.h"
-
-
+#include "LinkList.h"
 
 int main(int argc, const char * argv[]) {
 
+//    7/12/2017
+//    Run from the terminal
+//    printf("Print all Arguments:\n");
+//    for (int i = 0; i < argc; i++) {
+//        printf("%s\n", argv[i]);
+//    }
+
+//-----------------------------------General Algorithm-----------------------------------//
+    
 //9/17/2016
 /*
     char* str = "AAAAAAAAAAEDDDDDDDDDDDDBBBBC";
@@ -29,12 +36,11 @@ int main(int argc, const char * argv[]) {
 */
     
 //9/17/2016
-//    
-//     char* str = "A09BCD";
-//     int inputTotal=7;
+//    char* str = "A09BCD";
+//    int inputTotal=7;
 //    char outStr[10000];
-//     unsigned int outSize;
-//     decompressString(str, inputTotal, outStr, &outSize);
+//    unsigned int outSize;
+//    decompressString(str, inputTotal, outStr, &outSize);
     /*
      for (int i=0; i<outSize; i++) {
      printf("%c",outStr[i]);
@@ -44,38 +50,37 @@ int main(int argc, const char * argv[]) {
     */
     
     
-  // noThree(50);
+//    noThree(50);
 //    printf("\n");
-    // expect: 0 1 2 ! 4 5 ! 7 8 ! 10 11 ! 12 ! 14 15
-  //  printRectangle (4,7);
     
-    //printTriangle(9, '*');
-    
-   // printCross(15, 'J');
-    
+// expect: 0 1 2 ! 4 5 ! 7 8 ! 10 11 ! 12 ! 14 15
+//    printRectangle (4,7);
+//    printTriangle(9, '*');
+//    printCross(15, 'J');
 
-//PrintAddUpFunction();
-  //  result();
+//    PrintAddUpFunction();
+//    result();
     
+//---------------------------------Link List------------------------------//
     
 //9-28-2016
+//    List *list = createList();
+//    pushBackTolist(list, 4);
+//    pushBackTolist(list, 2);
+//    pushBackTolist(list, 1);
+//    pushBackTolist(list, 5);
+//    pushBackTolist(list, 9);
+//    pushBackTolist(list, 8);
+//
+//    printList(list);
     
-    List *list = createList();
-    pushBackTolist(list, 4);
-    pushBackTolist(list, 2);
-    pushBackTolist(list, 1);
-    pushBackTolist(list, 5);
-    pushBackTolist(list, 9);
-    pushBackTolist(list, 8);
+//2016-10-12
+//    List *list1 = createList();
+//    List *list2 = createList();
+//    alternativeSplit(list, list1, list2);
+//    printList(list1);
+//    printList(list2);
 
-    printList(list);
-    
-    //2016-10-12
-    List *list1 = createList();
-    List *list2 = createList();
-    alternativeSplit(list, list1, list2);
-    printList(list1);
-    printList(list2);
 
     
 //    removeFromList(list, 6);
@@ -104,9 +109,25 @@ int main(int argc, const char * argv[]) {
 //    combinedList = interleaveList(list, listB);
 //    printList(combinedList);
     
-    //2016-10-10 sort list
+//2016-10-10 sort list
 //    sortList(list);
 //    printList(list);
+    
+//2017-07-12
+
+        List *list = createList();
+        pushBackTolist(list, 4);
+        pushBackTolist(list, 2);
+        pushBackTolist(list, 1);
+        pushBackTolist(list, 5);
+        pushBackTolist(list, 9);
+        pushBackTolist(list, 8);
+    
+        printList(list);
+    
+        List *list2 = createList();
+        list2 = copyList(list);
+        printList(list2);
     
     
     free(list);
