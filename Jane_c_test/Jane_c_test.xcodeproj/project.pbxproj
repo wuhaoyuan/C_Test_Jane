@@ -10,6 +10,8 @@
 		B2A91F5E1D506682005D98FF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = B2A91F5D1D506682005D98FF /* main.c */; };
 		CC0E81F41F1736AD009777F8 /* GeneralAlg.c in Sources */ = {isa = PBXBuildFile; fileRef = CC0E81F31F1736AD009777F8 /* GeneralAlg.c */; };
 		CC136DFD1F173E4000BED562 /* LinkList.c in Sources */ = {isa = PBXBuildFile; fileRef = CC136DFC1F173E4000BED562 /* LinkList.c */; };
+		CC2EAE0B1F187F50005DDA43 /* Math.c in Sources */ = {isa = PBXBuildFile; fileRef = CC2EAE091F187F50005DDA43 /* Math.c */; };
+		CC2EAE171F1892EC005DDA43 /* NumberGuessingGame.c in Sources */ = {isa = PBXBuildFile; fileRef = CC2EAE151F1892EC005DDA43 /* NumberGuessingGame.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +32,10 @@
 		CC0E81E81F173168009777F8 /* GeneralAlg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralAlg.h; sourceTree = "<group>"; };
 		CC0E81F31F1736AD009777F8 /* GeneralAlg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GeneralAlg.c; sourceTree = "<group>"; };
 		CC136DFC1F173E4000BED562 /* LinkList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LinkList.c; sourceTree = "<group>"; };
+		CC2EAE091F187F50005DDA43 /* Math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Math.c; sourceTree = "<group>"; };
+		CC2EAE0A1F187F50005DDA43 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
+		CC2EAE151F1892EC005DDA43 /* NumberGuessingGame.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NumberGuessingGame.c; sourceTree = "<group>"; };
+		CC2EAE161F1892EC005DDA43 /* NumberGuessingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberGuessingGame.h; sourceTree = "<group>"; };
 		CCC0E8F61F173DB400B7E1BD /* LinkList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkList.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,13 +69,25 @@
 		B2A91F5C1D506682005D98FF /* Jane_c_test */ = {
 			isa = PBXGroup;
 			children = (
+				CC2EAE141F1892EC005DDA43 /* Games */,
 				B2A91F5D1D506682005D98FF /* main.c */,
 				CCC0E8F61F173DB400B7E1BD /* LinkList.h */,
 				CC136DFC1F173E4000BED562 /* LinkList.c */,
 				CC0E81E81F173168009777F8 /* GeneralAlg.h */,
 				CC0E81F31F1736AD009777F8 /* GeneralAlg.c */,
+				CC2EAE091F187F50005DDA43 /* Math.c */,
+				CC2EAE0A1F187F50005DDA43 /* Math.h */,
 			);
 			path = Jane_c_test;
+			sourceTree = "<group>";
+		};
+		CC2EAE141F1892EC005DDA43 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				CC2EAE151F1892EC005DDA43 /* NumberGuessingGame.c */,
+				CC2EAE161F1892EC005DDA43 /* NumberGuessingGame.h */,
+			);
+			path = Games;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2A91F5E1D506682005D98FF /* main.c in Sources */,
+				CC2EAE0B1F187F50005DDA43 /* Math.c in Sources */,
+				CC2EAE171F1892EC005DDA43 /* NumberGuessingGame.c in Sources */,
 				CC136DFD1F173E4000BED562 /* LinkList.c in Sources */,
 				CC0E81F41F1736AD009777F8 /* GeneralAlg.c in Sources */,
 			);

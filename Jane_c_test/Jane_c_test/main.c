@@ -8,12 +8,14 @@
 
 #include <stdio.h>
 #include "LinkList.h"
+#include "Math.h"
+#include "NumberGuessingGame.h"
 
 int main(int argc, const char * argv[]) {
 
 //    7/12/2017
 //    Run from the terminal
-//    printf("Print all Arguments:\n");
+//    printf("Print all ArgumentKs:\n");
 //    for (int i = 0; i < argc; i++) {
 //        printf("%s\n", argv[i]);
 //    }
@@ -115,22 +117,30 @@ int main(int argc, const char * argv[]) {
     
 //2017-07-12
 
-        List *list = createList();
-        pushBackTolist(list, 4);
-        pushBackTolist(list, 2);
-        pushBackTolist(list, 1);
-        pushBackTolist(list, 5);
-        pushBackTolist(list, 9);
-        pushBackTolist(list, 8);
+//        List *list = createList();
+//        pushBackTolist(list, 4);
+//        pushBackTolist(list, 2);
+//        pushBackTolist(list, 1);
+//        pushBackTolist(list, 5);
+//        pushBackTolist(list, 9);
+//        pushBackTolist(list, 8);
+//    
+//        printList(list);
+//    
+//        List *list2 = createList();
+//        list2 = copyList(list);
+//        printList(list2);
     
-        printList(list);
+//-------------Remember to free the list---------------//
+//    free(list);
+
     
-        List *list2 = createList();
-        list2 = copyList(list);
-        printList(list2);
+/*----------------Print the Prime Number between the Interval---------*/
+//    printPrimeNumbersBetweenInterval_Jane(0, 100);
+//    printPrimeNumbersBetweenInterval_Johnny(100, -50);
+
     
-    
-    free(list);
+    numberGuessingGame();
     return 0;
 }
 
