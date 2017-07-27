@@ -27,13 +27,14 @@ public:
     void gameStart();
     
 private:
-    void printPlayersInfo();
+    void printGameInfo();
     tuple<KeyCommand, int> parseKeyboarInput(char c) const;
     bool isDestinationValid(Location currentLoc, Direction moveDirection) const;
     Location getRandomAvailableLocation() const;
     bool isGameOver() const;
     
     int m_moveCount;
+    int m_nextWeaponGenrationMoveCount;
     vector<Player*> m_players;
     vector<Weapon*> m_idleWeapons;
     vector<KeyboarController*> m_keyboardControllers;

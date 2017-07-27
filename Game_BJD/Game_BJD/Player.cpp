@@ -58,7 +58,7 @@ void Player::move(Direction dir) {
 void Player::loseHealth(int loseHP) {
     if (loseHP > 0) {
         m_hp -= loseHP;
-        if (isAlive()) {
+        if (!isAlive()) {
             m_playerChar = PLAYER_CHARACTER_DEAD;
         }
     }

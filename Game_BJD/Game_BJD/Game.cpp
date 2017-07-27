@@ -95,12 +95,12 @@ void ClearScreen() {
     cout << string(50, '\n');
 }
 
-void Game::printPlayersInfo() {
+void Game::printGameInfo() {
     cout << "----------------------------------------------" << endl;
     cout << "Player: " << m_players[0]->getCharactor() << "\t|\t Player: " << m_players[1]->getCharactor() << endl;
     cout << "Weapon: " << (char)m_players[0]->getWeapon()->getCharactor() << "\t|\t Weapon: " << (char)m_players[1]->getWeapon()->getCharactor() << endl;
     cout << "HP: " << m_players[0]->getHealth() << "\t\t|\t HP: " << m_players[1]->getHealth() << endl;
-
+    cout << "Next Weapon:" << m_nextWeaponGenrationMoveCount - m_moveCount << endl;
     cout << "----------------------------------------------" << endl;
 }
 
@@ -236,12 +236,12 @@ void Game::gameStart() {
     int playerCmdIndex = 0;
     
     // init random weapon generation
-    int nextWeaponGenrationMoveCount = m_moveCount + getNextWeaponGenrationMoveCount();
+    m_nextWeaponGenrationMoveCount = m_moveCount + getNextWeaponGenrationMoveCount();
 
     do {
         // print game board
         ClearScreen();
-        printPlayersInfo();
+        printGameInfo();
         m_arena.printGameBoard(m_players, m_idleWeapons);
 
         // get user input
@@ -271,11 +271,11 @@ void Game::gameStart() {
                 }
                 
                 // Generate ramdom idle weapons
-                if (m_moveCount >= nextWeaponGenrationMoveCount) {
+                if (m_moveCount >= m_nextWeaponGenrationMoveCount) {
                     Location newIdleWeaponLocation = getRandomAvailableLocation();
                     Weapon *newWeapon = new Weapon(newIdleWeaponLocation, getRandomWeaponType());
                     m_idleWeapons.push_back(newWeapon);
-                    nextWeaponGenrationMoveCount = m_moveCount + getNextWeaponGenrationMoveCount();
+                    m_nextWeaponGenrationMoveCount = m_moveCount + getNextWeaponGenrationMoveCount();
                 }
                 
                 // check attack
