@@ -7,7 +7,7 @@
 //
 
 #include "GeneralAlg.h"
-#include "math.h"
+#include <math.h>
 #include "stdbool.h"
 
 #pragma mark -
@@ -22,7 +22,7 @@
 void printTopAndButton(int width)
 {
     for (int i=0; i<width; i++) {
-        printf("*");
+        printf(".");
     }
     return;
 }
@@ -30,19 +30,19 @@ void printMiddle (int width)
 {
     for (int i=0; i<width; i++) {
         if (i==0 || i==width-1)
-            printf("*");
+            printf(".");
         else
             printf(" ");
     }
     return;
 }
 
-void printRectangle(int height, int width) {
+void printSquare(int height) {
     for (int i=0; i<height; i++) {
         if(i==0 || i==height-1)
-            printTopAndButton(width);
+            printTopAndButton(height);
         else
-            printMiddle(width);
+            printMiddle(height);
         printf("\n");
     }
 }
@@ -53,7 +53,7 @@ void printChar(int num, char c) {
     }
 }
 
-void printTriangle(int level_in, char c) {
+void printTriangle(int level_in) {
     int numberOfSpace = 0;
     int numberOfChar = 0;
     
@@ -62,7 +62,7 @@ void printTriangle(int level_in, char c) {
         numberOfChar = (i + 1) * 2 - 1;
         
         printChar(numberOfSpace, ' ');
-        printChar(numberOfChar, c);
+        printChar(numberOfChar, '.');
         printf("\n");
     }
     

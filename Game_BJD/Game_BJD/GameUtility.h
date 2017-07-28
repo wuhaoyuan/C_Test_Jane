@@ -17,7 +17,7 @@
 #define WEAPON_GENERATION_STEPS_MIN (50)
 #define WEAPON_GENERATION_STEPS_MAX (100)
 #define PLAYER_CHARACTER_DEAD       'X'
-
+#define WEAPON_EFFECT_SIZE          (5)
 
 
 // Player 1 Configuration

@@ -10,6 +10,9 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
+extern "C" {
+    #include "GeneralAlg.h"
+}
 
 WeaponType getRandomWeaponType() {
     
@@ -22,6 +25,19 @@ WeaponType getRandomWeaponType() {
 Weapon::Weapon(Location loc, WeaponType type=getRandomWeaponType()) {
     m_loc = Location(loc.x, loc.y);
     m_type = type;
+    
+    switch (m_type) {
+        case WeaponRock:
+            m_printAttackEffect = &printSquare;
+            break;
+        case WeaponPaper:
+            break;
+        case WeaponScissors:
+            m_printAttackEffect = &printTriangle;
+            break;
+        default:
+            break;
+    }
 }
 
 char Weapon::getCharactor() const {
@@ -34,4 +50,8 @@ Location Weapon::getLocation() const {
 
 WeaponType Weapon::getWeaponType() const {
     return m_type;
+}
+
+void_f_int Weapon::getPrintAttackEffectFunction() {
+    return m_printAttackEffect;
 }

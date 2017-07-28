@@ -234,6 +234,7 @@ void Game::gameStart() {
 
     KeyCommand keyCmd = KeyCommandUnkown;
     int playerCmdIndex = 0;
+    void_f_int printEffect = NULL;
     
     // init random weapon generation
     m_nextWeaponGenrationMoveCount = m_moveCount + getNextWeaponGenrationMoveCount();
@@ -241,6 +242,9 @@ void Game::gameStart() {
     do {
         // print game board
         ClearScreen();
+        if (printEffect != NULL) {
+            printEffect(WEAPON_EFFECT_SIZE);
+        }
         printGameInfo();
         m_arena.printGameBoard(m_players, m_idleWeapons);
 
@@ -285,9 +289,11 @@ void Game::gameStart() {
                     switch (attackResult) {
                         case BattleResultWon:
                             m_players[1]->loseHealth(LOSE_HP_DEFEATED);
+                            printEffect = m_players[0]->getWeapon()->getPrintAttackEffectFunction();
                             break;
                         case BattleResultLost:
                             m_players[0]->loseHealth(LOSE_HP_DEFEATED);
+                            printEffect = m_players[1]->getWeapon()->getPrintAttackEffectFunction();
                             break;
                         case BattleResultDraw:
                             m_players[0]->loseHealth(LOSE_HP_DRAW);

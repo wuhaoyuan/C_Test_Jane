@@ -13,6 +13,7 @@
 		CC2EAE331F21D04C005DDA43 /* Weapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC2EAE311F21D04C005DDA43 /* Weapon.cpp */; };
 		CC2EAE371F242380005DDA43 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC2EAE351F242380005DDA43 /* Game.cpp */; };
 		CC2EAE3A1F270AE1005DDA43 /* KeyboardController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CC2EAE381F270AE1005DDA43 /* KeyboardController.cpp */; };
+		CC5604021F2AF58100412914 /* GeneralAlg.c in Sources */ = {isa = PBXBuildFile; fileRef = CC5604001F2AF58100412914 /* GeneralAlg.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,8 @@
 		CC2EAE361F242380005DDA43 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		CC2EAE381F270AE1005DDA43 /* KeyboardController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardController.cpp; sourceTree = "<group>"; };
 		CC2EAE391F270AE1005DDA43 /* KeyboardController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyboardController.hpp; sourceTree = "<group>"; };
+		CC5604001F2AF58100412914 /* GeneralAlg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = GeneralAlg.c; path = ../../Jane_c_test/Jane_c_test/GeneralAlg.c; sourceTree = "<group>"; };
+		CC5604011F2AF58100412914 /* GeneralAlg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneralAlg.h; path = ../../Jane_c_test/Jane_c_test/GeneralAlg.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,7 @@
 		CC2EAE231F21BAFC005DDA43 /* Game_BJD */ = {
 			isa = PBXGroup;
 			children = (
+				CC5603FF1F2AF55D00412914 /* SpecialEffects */,
 				CC2EAE241F21BAFC005DDA43 /* main.cpp */,
 				CC2EAE2B1F21C8DD005DDA43 /* Player.cpp */,
 				CC2EAE2C1F21C8DD005DDA43 /* Player.hpp */,
@@ -87,6 +91,15 @@
 				CC2EAE391F270AE1005DDA43 /* KeyboardController.hpp */,
 			);
 			path = Game_BJD;
+			sourceTree = "<group>";
+		};
+		CC5603FF1F2AF55D00412914 /* SpecialEffects */ = {
+			isa = PBXGroup;
+			children = (
+				CC5604001F2AF58100412914 /* GeneralAlg.c */,
+				CC5604011F2AF58100412914 /* GeneralAlg.h */,
+			);
+			name = SpecialEffects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +161,7 @@
 			files = (
 				CC2EAE2D1F21C8DD005DDA43 /* Player.cpp in Sources */,
 				CC2EAE331F21D04C005DDA43 /* Weapon.cpp in Sources */,
+				CC5604021F2AF58100412914 /* GeneralAlg.c in Sources */,
 				CC2EAE301F21CDA8005DDA43 /* GameBoard.cpp in Sources */,
 				CC2EAE251F21BAFC005DDA43 /* main.cpp in Sources */,
 				CC2EAE3A1F270AE1005DDA43 /* KeyboardController.cpp in Sources */,
@@ -278,6 +292,7 @@
 				CC2EAE2A1F21BAFC005DDA43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
